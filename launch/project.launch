@@ -1,0 +1,12 @@
+<launch>
+
+  <param name="use_sim_time" value="false" />
+  <include file="$(find turtlebot_le2i)/launch/remap_rplidar_minimal.launch"/> 
+ <include file="$(find turtlebot_bringup)/launch/3dsensor.launch"/>
+
+  <include file="$(find rbx2_nav)/launch/tb_demo_amcl.launch" >
+  	<arg name="map" value="my_map3_edited.yaml" />
+  </include>
+ 
+
+  
