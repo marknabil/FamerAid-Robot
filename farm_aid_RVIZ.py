@@ -136,50 +136,6 @@ class Rotate(State):
 
         return (Point(*trans), quat_to_angle(Quaternion(*rot)))
 
-class StartRobot(smach.State):
-    def __init__(self):
-        State.__init__(self, outcomes=['succeeded'])
-
-    def execute(self, userdata):
-        rospy.loginfo('Executing state Start Robot')
-        rospy.sleep(1)
-
-        #TODO: Give self explanation do somethign here like speak or move
-        rospy.loginfo('Hello, World! I am ASMA. It stands for Automatic Shopping Mall Assitant.')
-        #rospy.sleep(4)
-        rospy.loginfo('I will be patrolling different locations and doing tasks for you.')
-        #rospy.sleep(2)
-        return 'succeeded'
-
-class StartPatrol(smach.State):
-    def __init__(self):
-        State.__init__(self, outcomes=['succeeded'])
-
-    def execute(self, userdata):
-        rospy.loginfo('Executing state Start Patrol')
-        rospy.loginfo('Now I will start patrolling. Move away')
-        rospy.sleep(3)
-        #TODO: Implement patrolling here, like moving the next location, e.g to the 'nextLoc'
-        return 'succeeded' 
-
-class Error(smach.State):
-    def __init__(self):
-        smach.State.__init__(self, outcomes=['startpatrol', 'stop'])
-
-    def informErrorDetected(self):
-        return 1
-
-    def execute(self, userdata):
-        rospy.loginfo('Executing '+ type(self).__name__)
-        rospy.sleep(1)
-        errorCode = self.informErrorDetected()
-
-        if errorCode == 1:
-            return 'startpatrol'
-        else:
-            return 'stop'
-
-#p=rospy.Publisher('cmd_vel',Twist)
 
 
 class DetectTag(smach.State):
