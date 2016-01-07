@@ -228,40 +228,6 @@ class DetectTag(smach.State):
 
 
 '''
-# for RVIZ simulation :
-
-class DetectTag(smach.State):
-    def __init__(self):
-        smach.State.__init__(self, outcomes=['detect3','detect2','detect1','detect0','failed'])
-        
-        # rospy.Subscriber("ar_pose_marker", AlvarMarkers, tagDetected)
-        self.tag_ids = [0,1,2,3]
-
-    def execute(self, userdata):
-        a = random.randint(0,3)
-
-        if (a==0):
-            rospy.loginfo('detected 0')
-            userdata.detectTag_Flag=True
-            return 'detect0'
-        
-        elif (a==1):
-            rospy.loginfo('detected 1')
-            userdata.detectTag_Flag=True
-            return 'detect1'
-        elif (a==2):
-            rospy.loginfo('detected 2')
-            userdata.detectTag_Flag=True
-            return 'detect2'
-        elif (a==3):
-            rospy.loginfo('detected 3')
-            userdata.detectTag_Flag=True
-            return 'detect3'
-        else :
-            return 'failed'    
-'''
-
-'''
 class Error(smach.State):
     def __init__(self):
         smach.State.__init__(self, outcomes=['succeeded'])
