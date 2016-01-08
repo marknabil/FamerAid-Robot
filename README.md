@@ -28,10 +28,34 @@ https://github.com/pirobot/rbx2
 launch the project main launch file by the following command
 
 roslaunch farm_aid project.launch
+### Instead of the previous one launch file , use the following split launch files 
+####in the turtlebot laptop:
+roslaunch turtlebot_le2i remap_rplidar_minimal.launch
+
+roslaunch rbx1_nav tb_demo_amcl.launch map:=my_map3_edited.yaml
+
+roslaunch rbx2_vision openni_node.launch publish_tf:=false
+
+OR TRY THIS INSTEAD OF THE OPENNI NODE 
+
+roslaunch turtlebot_bringup 3dsensor.launch
+
+roslaunch rbx2_ar_tags ar_large_markers_kinect.launch
+
+####in the workstation : 
+roslaunch turtlebot_rviz_launchers view_navigation.launch
+
+roslaunch turtlebot_rviz_launchers view_navigation_marker.launch
+
+roslaunch turtlebot_teleop keyboard_teleop.launch
+
+
 
 then 
 
 rosrun farm_aid farm_aid.py
+
+
 
 ##Some Useful terminal commands : 
 
